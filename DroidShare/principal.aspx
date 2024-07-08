@@ -110,41 +110,7 @@
             margin-right: 10px;
         }
     </style>
-    <script type="text/javascript">
-        window.onload = function () {
-            // Llama a la función LoadPhotos cada 15 segundos
-            setInterval(LoadPhotos, 15000);
-        };
-
-        function LoadPhotos() {
-            // Hace una petición AJAX para obtener las fotos
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    if (xhr.status == 200) {
-                        // Si la petición es exitosa, actualiza las fotos
-                        var photos = JSON.parse(xhr.responseText);
-                        var photosContainer = document.getElementById("div_fotos");
-                        photosContainer.innerHTML = ""; // Limpia el contenedor de fotos
-                        for (var i = 0; i < photos.length; i++) {
-                            var img = document.createElement("img");
-                            img.src = photos[i];
-                            img.width = 200;
-                            img.height = "auto";
-                            img.style.margin = "10px";
-                            img.style.transition = "transform 0.3s ease-in-out";
-                            photosContainer.appendChild(img);
-                        }
-                    } else {
-                        // Si hay un error, muestra un mensaje en la consola
-                        console.error("Error al cargar las fotos:", xhr.status);
-                    }
-                }
-            };
-            xhr.open("GET", "GetPhotos.aspx", true);
-            xhr.send();
-        }
-    </script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
